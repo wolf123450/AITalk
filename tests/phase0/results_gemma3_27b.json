@@ -1,0 +1,145 @@
+{
+  "model": "gemma3:27b",
+  "lexicon_version": "0.1.0-phase0",
+  "production_tests": [
+    {
+      "scenario_id": "prod_01",
+      "input": "Read the file and check for errors",
+      "llm_output": "读文 和 测错",
+      "expected_concepts": [
+        "READ",
+        "FILE",
+        "AND",
+        "TEST",
+        "ERROR"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_02",
+      "input": "Create a new function that returns a list of strings",
+      "llm_output": "建函回列串",
+      "expected_concepts": [
+        "CREATE",
+        "FUNCTION",
+        "RETURN",
+        "LIST",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_03",
+      "input": "The task failed with an error, retry it",
+      "llm_output": "事败错，再步。",
+      "expected_concepts": [
+        "TASK",
+        "FAIL",
+        "ERROR",
+        "RETRY"
+      ],
+      "valid_symbol_ratio": 0.7142857142857143
+    },
+    {
+      "scenario_id": "prod_04",
+      "input": "Delete all variables of type string",
+      "llm_output": "删变▲串 全",
+      "expected_concepts": [
+        "DELETE",
+        "ALL",
+        "VARIABLE",
+        "TYPE",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_05",
+      "input": "Search the directory for files, skip unknown ones",
+      "llm_output": "找夹▲文, 过△名.",
+      "expected_concepts": [
+        "SEARCH",
+        "DIRECTORY",
+        "FILE",
+        "SKIP",
+        "UNKNOWN"
+      ],
+      "valid_symbol_ratio": 0.7777777777777778
+    }
+  ],
+  "comprehension_tests": [
+    {
+      "scenario_id": "comp_01",
+      "lcl_input": "读文和测错",
+      "llm_output": "读文和测错 translates to:\n\n\"Read file and test for errors.\"\n\nHere's the breakdown:\n\n* **读文** = Read file\n* **和** = and\n* **测错** = test for errors (测 = test, 错 = error)",
+      "expected_meaning": "Read the file and check for errors"
+    },
+    {
+      "scenario_id": "comp_02",
+      "lcl_input": "建函回列的串",
+      "llm_output": "建函回列的串 means:\n\n\"Create a function that returns a list of strings.\"\n\nHere's the breakdown:\n\n* **建** (建) = Create\n* **函** (函) = Function\n* **回** (回) = Return\n* **列** (列) = List\n* **的** (的) = of (connecting list to the following)\n* **串** (串) = String",
+      "expected_meaning": "Create a function that returns a list of strings"
+    },
+    {
+      "scenario_id": "comp_03",
+      "lcl_input": "事败错再",
+      "llm_output": "事败错再 translates to:\n\n**Task failed with error, retry.**\n\nHere's the breakdown:\n\n*   **事** (shì) = task\n*   **败** (bài) = fail\n*   **错** (cuò) = error\n*   **再** (zài) = retry",
+      "expected_meaning": "The task failed with an error, retry it"
+    },
+    {
+      "scenario_id": "comp_04",
+      "lcl_input": "删全变型串",
+      "llm_output": "删全变型串 means \"delete all variable strings\". \n\nHere's the breakdown:\n\n* **删** = delete\n* **全** = all\n* **变** = variable\n* **型** = type\n* **串** = string",
+      "expected_meaning": "Delete all variables of type string"
+    },
+    {
+      "scenario_id": "comp_05",
+      "lcl_input": "找夹文过未",
+      "llm_output": "Here's the breakdown of the LCL instruction \"找夹文过未\" and its English translation:\n\n* **找** = find\n* **夹** = directory\n* **文** = file\n* **过** = skip\n* **未** = unknown\n\nPutting it together, it means: **\"Find directory file, skip unknown.\"** \n\nMore naturally in English: **\"Find the file in the directory, and skip any that are unknown.\"** Or **\"Search the directory for files, ignoring any files that cannot be identified.\"**",
+      "expected_meaning": "Search the directory for files, skip unknown ones"
+    }
+  ],
+  "compression": {
+    "pairs": [
+      {
+        "english": "Read the file and check for errors",
+        "lcl": "读文和测错",
+        "english_tokens": 7,
+        "lcl_tokens": 6,
+        "ratio": 0.1428571428571429
+      },
+      {
+        "english": "Create a function that returns a list of strings",
+        "lcl": "建函回列的串",
+        "english_tokens": 9,
+        "lcl_tokens": 7,
+        "ratio": 0.2222222222222222
+      },
+      {
+        "english": "The task failed with an error, retry it",
+        "lcl": "事败错再",
+        "english_tokens": 9,
+        "lcl_tokens": 4,
+        "ratio": 0.5555555555555556
+      },
+      {
+        "english": "Delete all variables of type string",
+        "lcl": "删全变型串",
+        "english_tokens": 6,
+        "lcl_tokens": 6,
+        "ratio": 0.0
+      },
+      {
+        "english": "Search the directory for files, skip unknown ones",
+        "lcl": "找夹文过未",
+        "english_tokens": 9,
+        "lcl_tokens": 6,
+        "ratio": 0.33333333333333337
+      }
+    ],
+    "total_english_tokens": 40,
+    "total_lcl_tokens": 29,
+    "overall_compression_ratio": 0.275
+  },
+  "system_prompt_tokens": 384
+}

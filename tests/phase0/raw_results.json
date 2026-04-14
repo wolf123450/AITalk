@@ -1,0 +1,145 @@
+{
+  "model": "llama3.2:latest",
+  "lexicon_version": "0.1.0-phase0",
+  "production_tests": [
+    {
+      "scenario_id": "prod_01",
+      "input": "Read the file and check for errors",
+      "llm_output": "读文 ตรวจ错",
+      "expected_concepts": [
+        "READ",
+        "FILE",
+        "AND",
+        "TEST",
+        "ERROR"
+      ],
+      "valid_symbol_ratio": 0.42857142857142855
+    },
+    {
+      "scenario_id": "prod_02",
+      "input": "Create a new function that returns a list of strings",
+      "llm_output": "函数=函数 列=list 类=class 变=variable 值=value Rück=return",
+      "expected_concepts": [
+        "CREATE",
+        "FUNCTION",
+        "RETURN",
+        "LIST",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 0.17391304347826086
+    },
+    {
+      "scenario_id": "prod_03",
+      "input": "The task failed with an error, retry it",
+      "llm_output": "事△错误, 再改试。",
+      "expected_concepts": [
+        "TASK",
+        "FAIL",
+        "ERROR",
+        "RETRY"
+      ],
+      "valid_symbol_ratio": 0.5555555555555556
+    },
+    {
+      "scenario_id": "prod_04",
+      "input": "Delete all variables of type string",
+      "llm_output": "△变▲类型▲string",
+      "expected_concepts": [
+        "DELETE",
+        "ALL",
+        "VARIABLE",
+        "TYPE",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 0.5
+    },
+    {
+      "scenario_id": "prod_05",
+      "input": "Search the directory for files, skip unknown ones",
+      "llm_output": "读夹△文空",
+      "expected_concepts": [
+        "SEARCH",
+        "DIRECTORY",
+        "FILE",
+        "SKIP",
+        "UNKNOWN"
+      ],
+      "valid_symbol_ratio": 1.0
+    }
+  ],
+  "comprehension_tests": [
+    {
+      "scenario_id": "comp_01",
+      "lcl_input": "读文和测错",
+      "llm_output": "This LCL-encoded instruction translates to:\n\n\"Read the document and test for errors.\"\n\nHere's a breakdown of how the instruction works:\n\n* \"读文\" (pronounced \"dā wén\") is a single CJK character that represents the concept of \"read\".\n* \"&\" (and symbol) connects the two concepts.\n* \"测错\" (pronounced \"jiào kuò\") means \"test for errors\".\n\nSo, when combined, \"读文和测错\" forms a complete instruction to read a document and then test it for any errors.",
+      "expected_meaning": "Read the file and check for errors"
+    },
+    {
+      "scenario_id": "comp_02",
+      "lcl_input": "建函回列的串",
+      "llm_output": "According to the LCL lexicon, we can break down the instruction as follows:\n\n* 建 = create\n* 准 = build (implied by \"build\" being a synonym for \"create\")\n* 回 = return\n* 列 = list\n* 串 = string\n\nSo, in plain English, the instruction means: \"Create a new string.\"",
+      "expected_meaning": "Create a function that returns a list of strings"
+    },
+    {
+      "scenario_id": "comp_03",
+      "lcl_input": "事败错再",
+      "llm_output": "Using the provided LCL lexicon, let's break down the given instruction:\n\n- 事 = task\n- 败 = fail\n- 错 = error\n- 再 = retry\n\nSo, the instruction \"事敗錯再\" translates to \"retry after error\".",
+      "expected_meaning": "The task failed with an error, retry it"
+    },
+    {
+      "scenario_id": "comp_04",
+      "lcl_input": "删全变型串",
+      "llm_output": "This instruction translates to:\n\n\"Delete the entire variable string.\"\n\nHere's a breakdown of how it works:\n\n* \"删\" (delete)\n* \"全\" (whole)\n* \"变型\" (variable)\n* \"串\" (string)\n\nIn LCL, each word is represented by a single CJK character. This instruction uses this encoding to convey its meaning in plain English.",
+      "expected_meaning": "Delete all variables of type string"
+    },
+    {
+      "scenario_id": "comp_05",
+      "lcl_input": "找夹文过未",
+      "llm_output": "Let's break down the LCL-encoded instruction:\n\n* 找 (find)\n* 夹 (folder/file)\n* 文 (file)\n* 过 (over)\n* 未 (uncompleted/unused/not)\n\nSo, the entire instruction \"找夹文过未\" translates to:\n\n\"Find an unused folder/file that needs to be completed.\"\n\nIn other words, someone is asking you to locate a file or folder that has not been used yet and should be finished or processed.",
+      "expected_meaning": "Search the directory for files, skip unknown ones"
+    }
+  ],
+  "compression": {
+    "pairs": [
+      {
+        "english": "Read the file and check for errors",
+        "lcl": "读文和测错",
+        "english_tokens": 7,
+        "lcl_tokens": 6,
+        "ratio": 0.1428571428571429
+      },
+      {
+        "english": "Create a function that returns a list of strings",
+        "lcl": "建函回列的串",
+        "english_tokens": 9,
+        "lcl_tokens": 7,
+        "ratio": 0.2222222222222222
+      },
+      {
+        "english": "The task failed with an error, retry it",
+        "lcl": "事败错再",
+        "english_tokens": 9,
+        "lcl_tokens": 4,
+        "ratio": 0.5555555555555556
+      },
+      {
+        "english": "Delete all variables of type string",
+        "lcl": "删全变型串",
+        "english_tokens": 6,
+        "lcl_tokens": 6,
+        "ratio": 0.0
+      },
+      {
+        "english": "Search the directory for files, skip unknown ones",
+        "lcl": "找夹文过未",
+        "english_tokens": 9,
+        "lcl_tokens": 6,
+        "ratio": 0.33333333333333337
+      }
+    ],
+    "total_english_tokens": 40,
+    "total_lcl_tokens": 29,
+    "overall_compression_ratio": 0.275
+  },
+  "system_prompt_tokens": 384
+}
