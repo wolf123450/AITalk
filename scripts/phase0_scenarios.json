@@ -1,0 +1,72 @@
+[
+  {
+    "id": "prod_01",
+    "type": "production",
+    "english_instruction": "Read the file and check for errors",
+    "expected_lcl_concepts": ["READ", "FILE", "AND", "TEST", "ERROR"],
+    "notes": "Basic verb-object chain"
+  },
+  {
+    "id": "prod_02",
+    "type": "production",
+    "english_instruction": "Create a new function that returns a list of strings",
+    "expected_lcl_concepts": ["CREATE", "FUNCTION", "RETURN", "LIST", "STRING"],
+    "notes": "Compound concept chain"
+  },
+  {
+    "id": "prod_03",
+    "type": "production",
+    "english_instruction": "The task failed with an error, retry it",
+    "expected_lcl_concepts": ["TASK", "FAIL", "ERROR", "RETRY"],
+    "notes": "Status + action"
+  },
+  {
+    "id": "prod_04",
+    "type": "production",
+    "english_instruction": "Delete all variables of type string",
+    "expected_lcl_concepts": ["DELETE", "ALL", "VARIABLE", "TYPE", "STRING"],
+    "notes": "Quantifier + modifier"
+  },
+  {
+    "id": "prod_05",
+    "type": "production",
+    "english_instruction": "Search the directory for files, skip unknown ones",
+    "expected_lcl_concepts": ["SEARCH", "DIRECTORY", "FILE", "SKIP", "UNKNOWN"],
+    "notes": "Multi-action sequence"
+  },
+  {
+    "id": "comp_01",
+    "type": "comprehension",
+    "lcl_input": "读文和测错",
+    "expected_english_meaning": "Read the file and check for errors",
+    "notes": "Basic verb-object chain"
+  },
+  {
+    "id": "comp_02",
+    "type": "comprehension",
+    "lcl_input": "建函回列的串",
+    "expected_english_meaning": "Create a function that returns a list of strings",
+    "notes": "Compound concept chain"
+  },
+  {
+    "id": "comp_03",
+    "type": "comprehension",
+    "lcl_input": "事败错再",
+    "expected_english_meaning": "The task failed with an error, retry it",
+    "notes": "Status + action"
+  },
+  {
+    "id": "comp_04",
+    "type": "comprehension",
+    "lcl_input": "删全变型串",
+    "expected_english_meaning": "Delete all variables of type string",
+    "notes": "Quantifier + modifier"
+  },
+  {
+    "id": "comp_05",
+    "type": "comprehension",
+    "lcl_input": "找夹文过未",
+    "expected_english_meaning": "Search the directory for files, skip unknown ones",
+    "notes": "Multi-action sequence"
+  }
+]
