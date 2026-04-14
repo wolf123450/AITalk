@@ -1,0 +1,145 @@
+{
+  "model": "gpt-oss:20b",
+  "lexicon_version": "0.1.0-phase0",
+  "production_tests": [
+    {
+      "scenario_id": "prod_01",
+      "input": "Read the file and check for errors",
+      "llm_output": "读文 和 ◇check◈ 错",
+      "expected_concepts": [
+        "READ",
+        "FILE",
+        "AND",
+        "TEST",
+        "ERROR"
+      ],
+      "valid_symbol_ratio": 0.5454545454545454
+    },
+    {
+      "scenario_id": "prod_02",
+      "input": "Create a new function that returns a list of strings",
+      "llm_output": "建 函 回 列串",
+      "expected_concepts": [
+        "CREATE",
+        "FUNCTION",
+        "RETURN",
+        "LIST",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_03",
+      "input": "The task failed with an error, retry it",
+      "llm_output": "事败错 再",
+      "expected_concepts": [
+        "TASK",
+        "FAIL",
+        "ERROR",
+        "RETRY"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_04",
+      "input": "Delete all variables of type string",
+      "llm_output": "删全变型串",
+      "expected_concepts": [
+        "DELETE",
+        "ALL",
+        "VARIABLE",
+        "TYPE",
+        "STRING"
+      ],
+      "valid_symbol_ratio": 1.0
+    },
+    {
+      "scenario_id": "prod_05",
+      "input": "Search the directory for files, skip unknown ones",
+      "llm_output": "找夹文, 过未文",
+      "expected_concepts": [
+        "SEARCH",
+        "DIRECTORY",
+        "FILE",
+        "SKIP",
+        "UNKNOWN"
+      ],
+      "valid_symbol_ratio": 0.8571428571428571
+    }
+  ],
+  "comprehension_tests": [
+    {
+      "scenario_id": "comp_01",
+      "lcl_input": "读文和测错",
+      "llm_output": "The instruction says: “Read the file and test for errors.” In other words, first read the contents of the file, then run a test to check for any errors.",
+      "expected_meaning": "Read the file and check for errors"
+    },
+    {
+      "scenario_id": "comp_02",
+      "lcl_input": "建函回列的串",
+      "llm_output": "It’s an instruction to write a function that, when called, will return a string representation of a list. In other words, you should create a function that outputs the list as a string.",
+      "expected_meaning": "Create a function that returns a list of strings"
+    },
+    {
+      "scenario_id": "comp_03",
+      "lcl_input": "事败错再",
+      "llm_output": "It says: **“If a task fails or encounters an error, retry it.”**",
+      "expected_meaning": "The task failed with an error, retry it"
+    },
+    {
+      "scenario_id": "comp_04",
+      "lcl_input": "删全变型串",
+      "llm_output": "The instruction means: **“Delete all strings that are of variable type.”**  \nIn other words, remove every string that is categorized as a variable.",
+      "expected_meaning": "Delete all variables of type string"
+    },
+    {
+      "scenario_id": "comp_05",
+      "lcl_input": "找夹文过未",
+      "llm_output": "The instruction says: **“Find files in directories that have not yet been processed (i.e., files that are not skipped or already handled).”**  \n\n- **找** = “find”  \n- **夹** = “directory/folder”  \n- **文** = “file”  \n- **过** = “skip”  \n- **未** = “not yet”  \n\nSo it’s telling you to locate files inside folders that are still pending and have not been skipped or completed.",
+      "expected_meaning": "Search the directory for files, skip unknown ones"
+    }
+  ],
+  "compression": {
+    "pairs": [
+      {
+        "english": "Read the file and check for errors",
+        "lcl": "读文和测错",
+        "english_tokens": 7,
+        "lcl_tokens": 6,
+        "ratio": 0.1428571428571429
+      },
+      {
+        "english": "Create a function that returns a list of strings",
+        "lcl": "建函回列的串",
+        "english_tokens": 9,
+        "lcl_tokens": 7,
+        "ratio": 0.2222222222222222
+      },
+      {
+        "english": "The task failed with an error, retry it",
+        "lcl": "事败错再",
+        "english_tokens": 9,
+        "lcl_tokens": 4,
+        "ratio": 0.5555555555555556
+      },
+      {
+        "english": "Delete all variables of type string",
+        "lcl": "删全变型串",
+        "english_tokens": 6,
+        "lcl_tokens": 6,
+        "ratio": 0.0
+      },
+      {
+        "english": "Search the directory for files, skip unknown ones",
+        "lcl": "找夹文过未",
+        "english_tokens": 9,
+        "lcl_tokens": 6,
+        "ratio": 0.33333333333333337
+      }
+    ],
+    "total_english_tokens": 40,
+    "total_lcl_tokens": 29,
+    "overall_compression_ratio": 0.275
+  },
+  "system_prompt_tokens": 384
+}

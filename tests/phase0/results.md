@@ -225,6 +225,8 @@ Phase 0 validates whether LLMs can reliably produce and comprehend LCL-encoded s
 | English fallback overuse | Low | Strengthen prompt to discourage fallback for lexicon concepts |
 | Small lexicon limits expressiveness | Expected | Phase 1 expands to 600-1000 concepts |
 
+**Selected models for Phase 1 onward:** `qwen3-coder:30b` and `gpt-oss:20b` — chosen for best balance of LCL effectiveness and inference speed based on extended testing.
+
 **Next steps:**
 - Proceed to Phase 1: Research & Data Collection
 - Expand lexicon from 50 to 600-1000 concepts
