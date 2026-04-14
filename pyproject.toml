@@ -1,0 +1,27 @@
+[project]
+name = "lcl"
+version = "0.1.0"
+description = "LLM Compressed Lexicon — token-efficient symbolic encoding for LLM-to-LLM communication"
+requires-python = ">=3.12"
+dependencies = [
+    "tiktoken>=0.7",
+    "ollama>=0.4",
+]
+
+[project.scripts]
+lcl = "lcl.cli.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests that require Ollama (deselect with '-m \"not integration\"')",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
